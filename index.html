@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+
+  <title>دعوة زفاف</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="ar">
+
+<div id="welcomeScreen">
+  <h2>💍 Wedding Invitation</h2>
+  <p>اضغط للدخول</p>
+</div>
+
+<div class="bg-animation">
+  <span style="left:10%"></span>
+  <span style="left:30%"></span>
+  <span style="left:50%"></span>
+  <span style="left:70%"></span>
+  <span style="left:90%"></span>
+</div>
+
+<div class="lang-switch">
+  <button onclick="setLang('ar')">🇪🇬 عربي</button>
+  <button onclick="setLang('en')">🇬🇧 English</button>
+</div>
+
+<div class="overlay fade">
+
+  <section class="hero">
+    <h1 id="title">دعوة زفاف</h1>
+    <p id="desc">بقلوب مليئة بالحب والسعادة<br>ندعوكم لحضور حفل زفافنا</p>
+    <h2 id="names">بيشوي & سلفيا</h2>
+
+    <button onclick="playMusic()" id="musicBtn">تشغيل الموسيقى 🎵</button>
+  </section>
+
+  <section class="details">
+    <p id="day">الجمعة</p>
+    <p id="date">15 مايو 2026</p>
+    <p id="time">7:30 مساءً</p>
+
+    <p id="place">كنيسة الأنبا أنطونيوس - زهراء المعادي</p>
+
+    <div class="countdown">
+      <div><span id="days">0</span><p id="dLabel">يوم</p></div>
+      <div><span id="hours">0</span><p id="hLabel">ساعة</p></div>
+      <div><span id="minutes">0</span><p id="mLabel">دقيقة</p></div>
+      <div><span id="seconds">0</span><p id="sLabel">ثانية</p></div>
+    </div>
+
+    <a id="locationBtn" href="https://share.google/v0RXuk1pLxXJT7epH" target="_blank">
+      📍 عرض الموقع
+    </a>
+
+  </section>
+
+</div>
+
+<audio id="music" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script src="script.js"></script>
+</body>
+</html>
