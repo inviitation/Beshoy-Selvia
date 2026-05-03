@@ -1,7 +1,7 @@
-// متغير حالة الميوزك
+// حالة الميوزك
 let isPlaying = false;
 
-// تشغيل بعد تحميل الصفحة
+// عند تحميل الصفحة
 window.onload = function () {
 
   let welcomeScreen = document.getElementById("welcomeScreen");
@@ -10,7 +10,7 @@ window.onload = function () {
   welcomeScreen.onclick = () => {
     welcomeScreen.style.display = "none";
 
-    // 🎵 تشغيل الموسيقى تلقائي + Fade in
+    // 🎵 تشغيل الموسيقى تلقائي + Fade
     music.volume = 0;
     music.play();
 
@@ -25,7 +25,7 @@ window.onload = function () {
     }, 200);
 
     isPlaying = true;
-    document.getElementById("musicBtn").innerHTML = "🔊 إيقاف الموسيقى";
+    document.getElementById("musicBtn").innerHTML = "🔊 Stop Music";
 
     // 🎆 confetti
     for (let i = 0; i < 50; i++) {
@@ -39,9 +39,15 @@ window.onload = function () {
 
 };
 
-// 🌍 اللغة
-let savedLang = localStorage.getItem("lang") || "ar";
-setLang(savedLang);
+// 🌍 اللغة (افتراضي إنجليزي)
+let savedLang = localStorage.getItem("lang") || "en";
+
+// أول مرة يفتح → English
+if (!localStorage.getItem("lang")) {
+  setLang("en");
+} else {
+  setLang(savedLang);
+}
 
 function setLang(lang) {
   localStorage.setItem("lang", lang);
@@ -62,6 +68,8 @@ function setLang(lang) {
     mLabel.innerHTML = "دقيقة";
     sLabel.innerHTML = "ثانية";
 
+    document.getElementById("musicBtn").innerHTML = isPlaying ? "🔊 إيقاف الموسيقى" : "تشغيل الموسيقى 🎵";
+
   } else {
     title.innerHTML = "Wedding Invitation";
     desc.innerHTML = "With hearts full of love and joy,<br>we invite you to celebrate our wedding";
@@ -76,19 +84,21 @@ function setLang(lang) {
     hLabel.innerHTML = "Hours";
     mLabel.innerHTML = "Minutes";
     sLabel.innerHTML = "Seconds";
+
+    document.getElementById("musicBtn").innerHTML = isPlaying ? "🔊 Stop Music" : "Play Music 🎵";
   }
 }
 
-// ⏳ countdown
+// ⏳ Countdown
 let targetDate = new Date("May 15, 2026 19:30:00").getTime();
 
 setInterval(() => {
   let diff = targetDate - new Date().getTime();
 
-  days.innerHTML = Math.floor(diff / (1000*60*60*24));
-  hours.innerHTML = Math.floor((diff/(1000*60*60))%24);
-  minutes.innerHTML = Math.floor((diff/(1000*60))%60);
-  seconds.innerHTML = Math.floor((diff/1000)%60);
+  days.innerHTML = Math.floor(diff / (1000 * 60 * 60 * 24));
+  hours.innerHTML = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  minutes.innerHTML = Math.floor((diff / (1000 * 60)) % 60);
+  seconds.innerHTML = Math.floor((diff / 1000) % 60);
 }, 1000);
 
 // 🎵 زرار تشغيل / إيقاف
@@ -99,22 +109,24 @@ function playMusic() {
   if (!isPlaying) {
     music.play();
     isPlaying = true;
-    btn.innerHTML = "🔊 إيقاف الموسيقى";
   } else {
     music.pause();
     isPlaying = false;
-    btn.innerHTML = "تشغيل الموسيقى 🎵";
   }
+
+  // تحديث النص حسب اللغة
+  let lang = localStorage.getItem("lang") || "en";
+  setLang(lang);
 }
 
 // 💖 قلوب
-document.addEventListener("click", e=>{
-  let h=document.createElement("div");
-  h.innerHTML="💖";
-  h.style.position="fixed";
-  h.style.left=e.clientX+"px";
-  h.style.top=e.clientY+"px";
-  h.style.animation="floatUp 1s";
+document.addEventListener("click", e => {
+  let h = document.createElement("div");
+  h.innerHTML = "💖";
+  h.style.position = "fixed";
+  h.style.left = e.clientX + "px";
+  h.style.top = e.clientY + "px";
+  h.style.animation = "floatUp 1s";
   document.body.appendChild(h);
-  setTimeout(()=>h.remove(),1000);
+  setTimeout(() => h.remove(), 1000);
 });
