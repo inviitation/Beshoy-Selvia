@@ -42,7 +42,7 @@ window.onload = function () {
 // 🌍 اللغة (افتراضي إنجليزي)
 let savedLang = localStorage.getItem("lang") || "en";
 
-// أول مرة يفتح → English
+// أول مرة → English
 if (!localStorage.getItem("lang")) {
   setLang("en");
 } else {
@@ -61,7 +61,10 @@ function setLang(lang) {
     date.innerHTML = "15 مايو 2026";
     place.innerHTML = "كنيسة الأنبا أنطونيوس - زهراء المعادي";
     time.innerHTML = "7:30 مساءً";
+
+    // 📍 الزرار عربي
     locationBtn.innerHTML = "📍 عرض الموقع";
+    locationBtn.href = "https://maps.app.goo.gl/3yUNKWnoqn3KLuzg8";
 
     dLabel.innerHTML = "يوم";
     hLabel.innerHTML = "ساعة";
@@ -78,7 +81,10 @@ function setLang(lang) {
     date.innerHTML = "May 15, 2026";
     place.innerHTML = "Saint Anthony Church - Zahraa El Maadi";
     time.innerHTML = "7:30 PM";
+
+    // 📍 الزرار إنجليزي
     locationBtn.innerHTML = "📍 Get Directions";
+    locationBtn.href = "https://maps.app.goo.gl/3yUNKWnoqn3KLuzg8";
 
     dLabel.innerHTML = "Days";
     hLabel.innerHTML = "Hours";
@@ -114,7 +120,6 @@ function playMusic() {
     isPlaying = false;
   }
 
-  // تحديث النص حسب اللغة
   let lang = localStorage.getItem("lang") || "en";
   setLang(lang);
 }
